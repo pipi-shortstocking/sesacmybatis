@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sesac.mybatis.sesacmybatis.mapper.TableMapper">
+    <select id="showAll" resultType="sesac.mybatis.sesacmybatis.domain.Table">
+        SELECT `table`.* FROM `table`
+    </select>
+
+    <insert id="insertOne" parameterType="map">
+        INSERT INTO `table`(title, content, writer) VALUES(#{title}, #{content}, #{writer})
+    </insert>
+
+<!--  select : 결과를 반환하기 때문에 resultType을 지정해줬어야 함.  -->
+    <update id="updateOne" parameterType="map">
+<!-- update : 결과가 아니라 어떤 값을 넣을지에 대한 정보가 필요함. 즉, parameter 존재  -->
+        UPDATE `table` SET title = #{title}, content = #{content}, writer = #{writer}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteOne" parameterType="map">
+        DELETE FROM `table` WHERE id=#{id}
+    </delete>
+</mapper>
